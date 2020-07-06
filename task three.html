@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<head> 
+<meta charset="utf-8">
+<meta name="viewpoint" content="width=device-width">
+<title> Control Page </title> 
+<link type="text/css" rel="stylesheet" href="Styling.css"> 
+<script> 
+
+var can = document.getElementById('myCanvas');
+var ctx = can.getContext('2d');
+
+var button = document.getElementById('drawButton');
+var x1 = document.getElementById('x1');
+var y1 = document.getElementById('y1');
+var x2 = document.getElementById('x2');
+var y2 = document.getElementById('y2');
+
+button.addEventListener('click', function() {
+    ctx.beginPath();
+    ctx.moveTo(x1.value, y1.value);
+    ctx.lineTo(x2.value, y2.value);
+    ctx.stroke();
+}, false); 
+
+
+</script>
+</head> 
+<body> 
+
+<h1> Control Buttons </h1>
+<h2> Enter Distance to show diagram </h2>
+<br>
+<form method="post" action="commands.php"> 
+
+<center>
+<div>
+    <label class="labels"> Right:
+	<input type="text" name="direction" placeholder="required distance.."  id="x1"> </label> </div>
+<br>
+<div>
+
+ <label class="labels" > Forward: <input type="text" name="direction" placeholder="required distance.." id="x2"> </label> </div>
+<div>
+	<br>
+<label class="labels"> Left: <input type="text" name="direction" placeholder="required distance.."  id="y1"> </label> </div>
+<br>
+<div>
+<label class="labels"> Backward: <input type="text" name="direction" placeholder="required distance.." id="y2"> </label> </div>
+<br> 
+
+<div> 
+	<input type="submit" value="Save" name="save">
+	<input type= "submit" value="Delete" name="delete">
+	<input type="button" value="Start" name="drawButton" id="drawButton" >
+	<input type= "submit" value="Show Records" name="records1">
+</div>
+<br>
+<h3> A canvas to draw your desired inputs: </h3>
+
+<canvas id="myCanvas" width="300" height="300" style="border: 1px solid black;"></canvas>
+
+
+
+</center>
+</form>
+</body>
+
+

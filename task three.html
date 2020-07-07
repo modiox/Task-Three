@@ -4,26 +4,6 @@
 <meta name="viewpoint" content="width=device-width">
 <title> Control Page </title> 
 <link type="text/css" rel="stylesheet" href="Styling.css"> 
-<script> 
-
-var can = document.getElementById('myCanvas');
-var ctx = can.getContext('2d');
-
-var button = document.getElementById('drawButton');
-var x1 = document.getElementById('x1');
-var y1 = document.getElementById('y1');
-var x2 = document.getElementById('x2');
-var y2 = document.getElementById('y2');
-
-button.addEventListener('click', function() {
-    ctx.beginPath();
-    ctx.moveTo(x1.value, y1.value);
-    ctx.lineTo(x2.value, y2.value);
-    ctx.stroke();
-}, false); 
-
-
-</script>
 </head> 
 <body> 
 
@@ -35,34 +15,57 @@ button.addEventListener('click', function() {
 <center>
 <div>
     <label class="labels"> Right:
-	<input type="text" name="direction" placeholder="required distance.."  id="x1"> </label> </div>
+	<input type="text" name="right" placeholder="required distance.."  id="x1"> </label> </div>
 <br>
 <div>
 
- <label class="labels" > Forward: <input type="text" name="direction" placeholder="required distance.." id="x2"> </label> </div>
+ <label class="labels" > Forward: <input type="text" name="forward" placeholder="required distance.." id="x2"> </label> </div>
 <div>
 	<br>
-<label class="labels"> Left: <input type="text" name="direction" placeholder="required distance.."  id="y1"> </label> </div>
+<label class="labels"> Left: <input type="text" name="left" placeholder="required distance.."  id="y1"> </label> </div>
 <br>
 <div>
-<label class="labels"> Backward: <input type="text" name="direction" placeholder="required distance.." id="y2"> </label> </div>
 <br> 
-
-<div> 
 	<input type="submit" value="Save" name="save">
 	<input type= "submit" value="Delete" name="delete">
-	<input type="button" value="Start" name="drawButton" id="drawButton" >
-	<input type= "submit" value="Show Records" name="records1">
+	<input type="button" value="Start" name="drawButton" id="drawButton">
+	<input type="submit" value= "Show Records" name="records1"> 
 </div>
 <br>
 <h3> A canvas to draw your desired inputs: </h3>
-
-<canvas id="myCanvas" width="300" height="300" style="border: 1px solid black;"></canvas>
-
-
-
 </center>
 </form>
+<center>
+<canvas id="myCanvas" width="300" height="300" style="border: 1px solid black;">
+<?php 
+//drawing based on user's input
+
+if(isset($_POST["drawButton"])){ 
+   $right = $_POST["right"];
+   $left = $_POST["left"];
+   $forward = $_POST["forward"];
+   for($x =1 ; $x <= $right ; $x++) {
+   echo "&rarr;";
+     }
+ echo "</br>"; 
+ for($x = 1; x <= $forward ; $x++) {
+  echo "&uarr; </br>";
+
+}
+
+for($x= 1; $x <= $left; $x++) {
+	echo "&larr;"; 
+
+}
+}
+
+?> 
+</canvas>
+
+</center>
+
 </body>
+
+
 
 
